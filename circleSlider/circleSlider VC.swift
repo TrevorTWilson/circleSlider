@@ -23,7 +23,7 @@ struct CircleSliderVC: View {
         ZStack {
             Circle()
                 .frame(width: config.radius * 2, height: config.radius * 2)
-                .scaleEffect(1.2)
+                .scaleEffect(1.20)
             
             Circle()
                 .stroke(Color.gray,
@@ -80,8 +80,9 @@ struct Config {
     let radius: CGFloat
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct Content_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        //ContentView()
+        CircleSliderVC()
     }
 }
