@@ -14,6 +14,7 @@
 		5B952C042B5C56EB00540044 /* circleSliderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B952C032B5C56EB00540044 /* circleSliderTests.swift */; };
 		5B952C0E2B5C56EB00540044 /* circleSliderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B952C0D2B5C56EB00540044 /* circleSliderUITests.swift */; };
 		5B952C102B5C56EB00540044 /* circleSliderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B952C0F2B5C56EB00540044 /* circleSliderUITestsLaunchTests.swift */; };
+		5B952C1D2B5C578800540044 /* circleSlider VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B952C1C2B5C578800540044 /* circleSlider VC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		5B952C092B5C56EB00540044 /* circleSliderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = circleSliderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B952C0D2B5C56EB00540044 /* circleSliderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = circleSliderUITests.swift; sourceTree = "<group>"; };
 		5B952C0F2B5C56EB00540044 /* circleSliderUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = circleSliderUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5B952C1C2B5C578800540044 /* circleSlider VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "circleSlider VC.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				5B952BF22B5C56E900540044 /* circleSliderApp.swift */,
 				5B952BF42B5C56E900540044 /* ContentView.swift */,
+				5B952C1C2B5C578800540044 /* circleSlider VC.swift */,
 				5B952BF62B5C56EA00540044 /* Assets.xcassets */,
 				5B952BF82B5C56EA00540044 /* Preview Content */,
 			);
@@ -257,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B952C1D2B5C578800540044 /* circleSlider VC.swift in Sources */,
 				5B952BF52B5C56E900540044 /* ContentView.swift in Sources */,
 				5B952BF32B5C56E900540044 /* circleSliderApp.swift in Sources */,
 			);
