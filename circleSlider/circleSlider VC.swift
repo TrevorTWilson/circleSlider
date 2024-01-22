@@ -37,11 +37,8 @@ struct CircleSliderVC: View {
         self.radius = radius
         self.initialSliderValue = initialSliderValue
         self.sliderValue = initialSliderValue // Initialize the sliderValue state variable
-        angleValue = (Double(initialSliderValue/totalValue)*360)-90
+        angleValue = (Double(360/totalValue)*initialSliderValue)
     }
-    
-
-
 
     var body: some View {
         ZStack {
@@ -78,7 +75,6 @@ struct CircleSliderVC: View {
     }
     
     private func change(location: CGPoint) {
-        print(angleValue)
         // creating vector from location point
         let vector = CGVector(dx: location.x, dy: location.y)
         

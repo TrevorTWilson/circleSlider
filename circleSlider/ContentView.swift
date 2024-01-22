@@ -26,7 +26,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         
-        let amps = CircleSliderVC(minimunSliderValue: 0, maximunSliderValue: 40, minimunRange: 100, maximunRange: 200, totalValue: 40, knobRadius: 15, radius: 75, initialSliderValue: 10)
+        let amps = CircleSliderVC(minimunSliderValue: 0, maximunSliderValue: 40, minimunRange: 100, maximunRange: 200, totalValue: 40, knobRadius: 15, radius: 75, initialSliderValue: 35)
         
         ZStack {
             Rectangle()
@@ -36,8 +36,6 @@ struct ContentView: View {
             VStack {
                 Spacer()
                 HStack {
-                    Spacer()
-                    amps
                     Spacer()
                     amps
                     Spacer()
