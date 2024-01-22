@@ -25,6 +25,12 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+        
+        let amps = CircleSliderVC()
+        let volts = CircleSliderVC()
+        let distance = CircleSliderVC()
+        let time = CircleSliderVC()
+        
         ZStack {
             Rectangle()
                 .fill(Color.init(red: 34/255, green: 30/255, blue: 47/255))
@@ -34,17 +40,17 @@ struct ContentView: View {
                 Spacer()
                 HStack {
                     Spacer()
-                    CircleSliderVC()
+                    amps
                     Spacer()
-                    CircleSliderVC()
+                    volts
                     Spacer()
                 }
                 Spacer()
                 HStack {
                     Spacer()
-                    CircleSliderVC()
+                    distance
                     Spacer()
-                    CircleSliderVC()
+                    time
                     Spacer()
                 }
                 Spacer()
