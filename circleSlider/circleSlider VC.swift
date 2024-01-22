@@ -13,7 +13,7 @@ import SwiftUI
 
 struct CircleSliderVC: View {
     //@State var sliderValue: CGFloat = 0.0
-    @State private var angleValue: CGFloat = 0.0
+    @State private var angleValue: CGFloat
     @State private var sliderValue: CGFloat
 
     var minimunSliderValue : CGFloat
@@ -36,8 +36,12 @@ struct CircleSliderVC: View {
         self.knobRadius = knobRadius
         self.radius = radius
         self.initialSliderValue = initialSliderValue
-        self.sliderValue = self.initialSliderValue // Initialize the sliderValue state variable
+        self.sliderValue = initialSliderValue // Initialize the sliderValue state variable
+        angleValue = (Double(initialSliderValue/totalValue)*360)-90
     }
+    
+
+
 
     var body: some View {
         ZStack {
@@ -51,13 +55,13 @@ struct CircleSliderVC: View {
                 .frame(width: self.radius * 2, height: self.radius * 2)
             
             Circle()
-                .trim(from: 0.0, to: sliderValue/self.totalValue)
-                .stroke(sliderValue < self.maximunSliderValue/2 ? Color.blue : Color.red, lineWidth: 4)
+                .trim(from: 0.0, to: self.sliderValue/self.totalValue)
+                .stroke(self.sliderValue < self.maximunSliderValue/2 ? Color.blue : Color.red, lineWidth: 4)
                 .frame(width: self.radius * 2, height: self.radius * 2)
                 .rotationEffect(.degrees(-90))
             
             Circle()
-                .fill(sliderValue < self.maximunSliderValue/2 ? Color.blue : Color.red)
+                .fill(self.sliderValue < self.maximunSliderValue/2 ? Color.blue : Color.red)
                 .frame(width: self.knobRadius * 2, height: self.knobRadius * 2)
                 .padding(10)
                 .offset(y: -self.radius)
@@ -67,13 +71,14 @@ struct CircleSliderVC: View {
                                 change(location: value.location)
                             }))
             
-            Text("\(String.init(format: "%.0f", sliderValue)) º")
+            Text("\(String.init(format: "%.0f", self.sliderValue)) º")
                             .font(.system(size: 60))
                             .foregroundColor(.white)
         }
     }
     
     private func change(location: CGPoint) {
+        print(angleValue)
         // creating vector from location point
         let vector = CGVector(dx: location.x, dy: location.y)
         
@@ -87,7 +92,7 @@ struct CircleSliderVC: View {
         
         if value >= self.minimunSliderValue && value <= self.maximunSliderValue {
             self.sliderValue = value
-            self.angleValue = fixedAngle * 180 / .pi // converting to degree
+            angleValue = fixedAngle * 180 / .pi // converting to degree
         }
     }
 }
@@ -97,6 +102,6 @@ struct CircleSliderVC: View {
 struct Content_Previews: PreviewProvider {
     static var previews: some View {
         //ContentView()
-        CircleSliderVC(minimunSliderValue: 0, maximunSliderValue: 40, minimunRange: 100, maximunRange: 200, totalValue: 40, knobRadius: 15, radius: 75, initialSliderValue: 0)
+        CircleSliderVC(minimunSliderValue: 0, maximunSliderValue: 40, minimunRange: 100, maximunRange: 200, totalValue: 40, knobRadius: 15, radius: 75, initialSliderValue: 10)
     }
 }

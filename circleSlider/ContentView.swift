@@ -39,6 +39,8 @@ struct ContentView: View {
                     Spacer()
                     amps
                     Spacer()
+                    amps
+                    Spacer()
                 }
                 
                 Spacer()
