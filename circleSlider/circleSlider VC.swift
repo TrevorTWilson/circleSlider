@@ -12,15 +12,10 @@ import SwiftUI
 
 
 struct CircleSliderVC: View {
-    @State var temperatureValue: CGFloat = 0.0
-    @State var angleValue: CGFloat = 0.0
-//    let config = Config(minimunSliderValue: 0.0,
-//                        maximunSliderValue: 40.0,
-//                        minimunRange: 100,
-//                        maximunRange:100,
-//                        totalValue: 40.0,
-//                        knobRadius: 15.0,
-//                        radius: 75.0)
+    //@State var sliderValue: CGFloat = 0.0
+    @State private var angleValue: CGFloat = 0.0
+    @State private var sliderValue: CGFloat
+
     var minimunSliderValue : CGFloat
     var maximunSliderValue : CGFloat
     var minimunRange : CGFloat
@@ -28,8 +23,11 @@ struct CircleSliderVC: View {
     var totalValue : CGFloat
     var knobRadius : CGFloat
     var radius : CGFloat
+    var initialSliderValue : CGFloat
     
-    init(minimunSliderValue: CGFloat, maximunSliderValue: CGFloat, minimunRange: CGFloat, maximunRange: CGFloat, totalValue: CGFloat, knobRadius: CGFloat, radius: CGFloat) {
+    //var sliderValue : CGFloat
+    
+    init(minimunSliderValue: CGFloat, maximunSliderValue: CGFloat, minimunRange: CGFloat, maximunRange: CGFloat, totalValue: CGFloat, knobRadius: CGFloat, radius: CGFloat, initialSliderValue: CGFloat) {
         self.minimunSliderValue = minimunSliderValue
         self.maximunSliderValue = maximunSliderValue
         self.minimunRange = minimunRange
@@ -37,6 +35,8 @@ struct CircleSliderVC: View {
         self.totalValue = totalValue
         self.knobRadius = knobRadius
         self.radius = radius
+        self.initialSliderValue = initialSliderValue
+        self.sliderValue = self.initialSliderValue // Initialize the sliderValue state variable
     }
 
     var body: some View {
@@ -51,13 +51,13 @@ struct CircleSliderVC: View {
                 .frame(width: self.radius * 2, height: self.radius * 2)
             
             Circle()
-                .trim(from: 0.0, to: temperatureValue/self.totalValue)
-                .stroke(temperatureValue < self.maximunSliderValue/2 ? Color.blue : Color.red, lineWidth: 4)
+                .trim(from: 0.0, to: sliderValue/self.totalValue)
+                .stroke(sliderValue < self.maximunSliderValue/2 ? Color.blue : Color.red, lineWidth: 4)
                 .frame(width: self.radius * 2, height: self.radius * 2)
                 .rotationEffect(.degrees(-90))
             
             Circle()
-                .fill(temperatureValue < self.maximunSliderValue/2 ? Color.blue : Color.red)
+                .fill(sliderValue < self.maximunSliderValue/2 ? Color.blue : Color.red)
                 .frame(width: self.knobRadius * 2, height: self.knobRadius * 2)
                 .padding(10)
                 .offset(y: -self.radius)
@@ -67,7 +67,7 @@ struct CircleSliderVC: View {
                                 change(location: value.location)
                             }))
             
-            Text("\(String.init(format: "%.0f", temperatureValue)) º")
+            Text("\(String.init(format: "%.0f", sliderValue)) º")
                             .font(.system(size: 60))
                             .foregroundColor(.white)
         }
@@ -86,25 +86,17 @@ struct CircleSliderVC: View {
         let value = fixedAngle / (2.0 * .pi) * self.totalValue
         
         if value >= self.minimunSliderValue && value <= self.maximunSliderValue {
-            temperatureValue = value
-            angleValue = fixedAngle * 180 / .pi // converting to degree
+            self.sliderValue = value
+            self.angleValue = fixedAngle * 180 / .pi // converting to degree
         }
     }
 }
 
-struct Config {
-    let minimunSliderValue: CGFloat
-    let maximunSliderValue: CGFloat
-    let minimunRange: CGFloat
-    let maximunRange: CGFloat
-    let totalValue: CGFloat
-    let knobRadius: CGFloat
-    let radius: CGFloat
-}
+
 
 struct Content_Previews: PreviewProvider {
     static var previews: some View {
         //ContentView()
-        CircleSliderVC(minimunSliderValue: 0, maximunSliderValue: 40, minimunRange: 100, maximunRange: 200, totalValue: 40, knobRadius: 15, radius: 75)
+        CircleSliderVC(minimunSliderValue: 0, maximunSliderValue: 40, minimunRange: 100, maximunRange: 200, totalValue: 40, knobRadius: 15, radius: 75, initialSliderValue: 0)
     }
 }
